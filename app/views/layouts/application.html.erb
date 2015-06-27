@@ -9,7 +9,17 @@
 <body>
 
 <div class="container">
-  <%= yield %>
+  <div class="col-md-3">
+    <div class="left-navigation">
+      <%= render_navigation :renderer => :bootstrap %>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <%= yield %>
+  </div>
+  
+  
 </div>
+
 </body>
 </html>
