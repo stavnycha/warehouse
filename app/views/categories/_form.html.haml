@@ -1,13 +1,9 @@
-= form_for @catagory do |f|
-  - if @catagory.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@catagory.errors.count, "error")} prohibited this catagory from being saved:"
-      %ul
-        - @catagory.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .actions
-    = f.submit 'Save'
+= form_for @category, html: { class: "form form-horizontal category" } do |f|
+  .form-group
+    = f.label :name, class: 'control-label'
+    .controls
+      = f.text_field :name, class: 'form-control', required: true
+    = error_span(@category[:name])
+  
+  = f.submit nil,class: 'btn btn-primary'
+  = link_to 'Cancel', categories_path, :class => 'btn btn-default'

@@ -1,9 +1,12 @@
-%p#notice= notice
+.page-header
+  %h1= Category
 
 %p
-  %b Name:
-  = @catagory.name
+  %strong= 'Name:'
+  %br
+  = @category.name
 
-= link_to 'Edit', edit_catagory_path(@catagory)
-\|
-= link_to 'Back', catagories_path
+
+= link_to 'Back',    categories_path, :class => 'btn btn-default'
+= link_to 'Edit',    edit_category_path(@category), :class => 'btn btn-default'
+= link_to 'Destroy', category_path(@category), :method => "delete", :data => { confirm: 'Are you sure?' }, :class => 'btn btn-danger'

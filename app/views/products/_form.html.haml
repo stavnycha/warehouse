@@ -1,22 +1,29 @@
-= form_for @product do |f|
-  - if @product.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
-      %ul
-        - @product.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :price
-    = f.text_field :price
-  .field
-    = f.label :description
-    = f.text_area :description
-  //.field
-  //  = f.label :category
-  //  = f.text_field :category
-  .actions
-    = f.submit 'Save'
+= form_for @product, html: { class: "form form-horizontal product", multiple: true } do |f|
+  .form-group
+    = f.label :name, class: 'control-label'
+    .controls
+      = f.text_field :name, class: 'form-control', required: true
+    = error_span(@product[:name])
+  .form-group
+    = f.label :price, class: 'control-label'
+    .controls
+      = f.number_field :price, class: 'form-control', required: true
+    = error_span(@product[:price])
+  .form-group
+    = f.label :description, class: 'control-label'
+    .controls
+      = f.text_field :description, class: 'form-control'
+    = error_span(@product[:description])
+  .form-group
+    = f.label :categories, class: 'control-label'
+    .controls
+      = select_tag 'product[category_ids]', options_from_collection_for_select(@categories, :id, :name, @product.categories.map(&:id)), multiple: true, class: 'selectpicker'
+  .form-group
+    = f.label :picture, class: 'control-label'
+    .controls
+      = f.file_field :picture, class: 'form-control'
+      = f.hidden_field :picture_cache
+    = error_span(@product[:picture])
+  
+  = f.submit nil,class: 'btn btn-primary'
+  = link_to 'Cancel', products_path, :class => 'btn btn-default'

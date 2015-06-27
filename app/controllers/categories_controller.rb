@@ -1,59 +1,59 @@
-class CatagoriesController < ApplicationController
-  before_action :set_catagory, only: [:show, :edit, :update, :destroy]
+class CategoriesController < ApplicationController
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
 
-  # GET /catagories
+  # GET /categories
   def index
-    @catagories = Catagory.all
+    @categories = Category.all
   end
 
-  # GET /catagories/1
+  # GET /categories/1
   def show
   end
 
-  # GET /catagories/new
+  # GET /categories/new
   def new
-    @catagory = Catagory.new
+    @category = Category.new
   end
 
-  # GET /catagories/1/edit
+  # GET /categories/1/edit
   def edit
   end
 
-  # POST /catagories
+  # POST /categories
   def create
-    @catagory = Catagory.new(catagory_params)
+    @category = Category.new(category_params)
 
-    if @catagory.save
-      edirect_to @catagory, notice: 'Catagory was successfully created.'
+    if @category.save
+      redirect_to @category, notice: 'Category was successfully created.'
     else
       render :new
     end
   end
 
-  # PATCH/PUT /catagories/1
+  # PATCH/PUT /categories/1
   def update
-    if @catagory.update(catagory_params)
-      redirect_to @catagory, notice: 'Catagory was successfully updated.'
+    if @category.update(category_params)
+      redirect_to @category, notice: 'Category was successfully updated.'
     else
       render :edit
     end
   end
 
-  # DELETE /catagories/1
+  # DELETE /categories/1
   def destroy
-    @catagory.destroy
-    redirect_to catagories_url, notice: 'Catagory was successfully destroyed.'
+    @category.destroy
+    redirect_to categories_url, notice: 'Category was successfully destroyed.'
   end
 
   private
   
   # Use callbacks to share common setup or constraints between actions.
-  def set_catagory
-    @catagory = Catagory.find(params[:id])
+  def set_category
+    @category = Category.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def catagory_params
-    params.require(:catagory).permit(:name)
+  def category_params
+    params.require(:category).permit(:name)
   end
 end

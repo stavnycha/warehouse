@@ -1,2 +1,2 @@
-module CatagoriesHelper
+module CategoriesHelper
 end

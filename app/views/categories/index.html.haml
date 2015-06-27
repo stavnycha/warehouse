@@ -1,21 +1,18 @@
-%h1 Listing catagories
-
-%table
+.page-header
+  %h1 Categories
+%table.table.table-striped
   %thead
     %tr
+      %th Id
       %th Name
       %th
-      %th
-      %th
-
   %tbody
-    - @catagories.each do |catagory|
+    - @categories.each do |category|
       %tr
-        %td= catagory.name
-        %td= link_to 'Show', catagory
-        %td= link_to 'Edit', edit_catagory_path(catagory)
-        %td= link_to 'Destroy', catagory, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to category.id, category_path(category)
+        %td= category.name
+        %td
+          = link_to 'Edit', edit_category_path(category), :class => 'btn btn-default btn-xs'
+          = link_to 'Destroy', category_path(category), :method => :delete, :data => { confirm: 'Are you sure?' }, :class => 'btn btn-xs btn-danger'
 
-%br
-
-= link_to 'New Catagory', new_catagory_path
+= link_to 'New', new_category_path, :class => 'btn btn-primary'

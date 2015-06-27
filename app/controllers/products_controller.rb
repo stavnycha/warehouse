@@ -1,9 +1,10 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :edit]
 
   # GET /products
   def index
-    @products = Product.all
+    @products = Product.includes(:categories).all
   end
 
   # GET /products/1
@@ -53,6 +54,10 @@ class ProductsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def product_params
-      params.require(:product).permit(:name, :price, :description, :category_id)
+      params.require(:product).permit(:name, :price, :description, :picture, category_ids: [])
+    end
+
+    def set_categories
+      @categories = Category.all
     end
 end
