@@ -60,7 +60,9 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :categories_nav, 'Categories', categories_path
     primary.item :products_nav,   'Products',   products_path
-    primary.item :users_nav,      'Users',      '#'
+    primary.item :users_nav,      'Users',      users_path
+    primary.item :login,          'Login',      login_path,     unless: -> { user_signed_in? }
+    primary.item :logout,         'Logout',     logout_path, if:     -> { user_signed_in? }
 
     # Add an item which has a sub navigation (same params, but with block)
     #primary.item :key_2, 'name', url, options do |sub_nav|

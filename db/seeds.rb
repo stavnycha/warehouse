@@ -26,3 +26,5 @@ goods.each do |category_name, items|
     end
   end
 end
+
+User.create!(email: 'email@mail.com', password: 'root')
