@@ -23,7 +23,6 @@ gem 'jquery-rails'
 # bundle exec rake doc:rails generates the API under doc/api.
 # gem 'sdoc', '~> 0.4.0', group: :doc
 
-# better views structure
 gem 'haml-rails'
 
 # file storage
@@ -32,6 +31,8 @@ gem 'mini_magick'
 
 # pagination with Twitter Bootstrap
 gem 'kaminari'
+
+# bootstrap
 gem 'twitter-bootstrap-rails'
 
 gem 'simple-navigation-bootstrap'

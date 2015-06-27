@@ -1,4 +1,9 @@
 = form_for @category, html: { class: "form form-horizontal category" } do |f|
+  - if @category.errors.any?
+    .alert.alert-danger
+      - @category.errors.full_messages.each do |msg|
+        %li= msg
+
   .form-group
     = f.label :name, class: 'control-label'
     .controls

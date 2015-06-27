@@ -1,4 +1,9 @@
 = form_for @product, html: { class: "form form-horizontal product", multiple: true } do |f|
+  - if @product.errors.any?
+    .alert.alert-danger
+      - @product.errors.full_messages.each do |msg|
+        %li= msg
+
   .form-group
     = f.label :name, class: 'control-label'
     .controls
