@@ -31,7 +31,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 # pagination with Twitter Bootstrap
-gem 'will_paginate-bootstrap'
+gem 'kaminari'
 gem 'twitter-bootstrap-rails'
 
 # Use ActiveModel has_secure_password

@@ -3,7 +3,10 @@ class CategoriesController < ApplicationController
 
   # GET /categories
   def index
-    @categories = Category.all
+    @categories = Category.
+                    search(params[:search]).
+                    order(sort_column + " " + sort_direction).
+                    page(params[:page]).per(10)
   end
 
   # GET /categories/1

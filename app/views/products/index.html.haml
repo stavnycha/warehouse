@@ -1,26 +1,11 @@
 .page-header
   %h1 Products
-%table.table.table-striped
-  %thead
-    %tr
-      %th Id
-      %th Picture
-      %th Name
-      %th Price
-      %th Description
-      %th Categories
-      %th
-  %tbody
-    - @products.each do |product|
-      %tr
-        %td= link_to product.id, product_path(product)
-        %td= image_tag product.picture.thumb.url
-        %td= product.name
-        %td= product.price
-        %td= product.description
-        %td= product.categories.map(&:name).join(', ')
-        %td
-          = link_to 'Edit', edit_product_path(product), :class => 'btn btn-default btn-xs'
-          = link_to 'Destroy', product_path(product), :method => :delete, :data => { confirm: 'Are you sure?' }, :class => 'btn btn-xs btn-danger'
 
-= link_to 'New', new_product_path, :class => 'btn btn-primary'
+= form_tag products_path, :method => 'get', :id => "products_search", :remote => true do
+  %p
+    = text_field_tag :search, params[:search]
+    = submit_tag "Search", :name => nil
+  %div#products
+    = render 'products'
+
+%p= link_to 'New', new_product_path, :class => 'btn btn-primary'

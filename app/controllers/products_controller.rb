@@ -4,7 +4,11 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = Product.includes(:categories).all
+    @products = Product. 
+                  includes(:categories).
+                  search(params[:search]).
+                  order(sort_column + " " + sort_direction).
+                  page(params[:page]).per(10)
   end
 
   # GET /products/1
@@ -47,17 +51,18 @@ class ProductsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
+  
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def product_params
-      params.require(:product).permit(:name, :price, :description, :picture, category_ids: [])
-    end
+  # Only allow a trusted parameter "white list" through.
+  def product_params
+    params.require(:product).permit(:name, :price, :description, :picture, category_ids: [])
+  end
 
-    def set_categories
-      @categories = Category.all
-    end
+  def set_categories
+    @categories = Category.all
+  end
 end
