@@ -27,4 +27,7 @@ goods.each do |category_name, items|
   end
 end
 
-User.create!(email: 'email@mail.com', password: 'root')
+User.where(email: 'email@mail.com').first_or_initialize do |u|
+  u.password = 'root'
+  u.save!
+end

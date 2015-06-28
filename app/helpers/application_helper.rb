@@ -12,7 +12,11 @@ module ApplicationHelper
 
   # css class for sorting arrow
   def css_class
-    column.downcase == sort_column.downcase ? "glyphicon glyphicon-chevron-#{sort_html_class(sort_direction)}" : nil
+    column.downcase == sort_column.downcase ? (css_chevron + '-' + sort_html_class(sort_direction)) : nil
+  end
+
+  def css_chevron
+    'glyphicon glyphicon-chevron'
   end
 
   # css class for sorting arrow direction

@@ -28,7 +28,7 @@ describe Product::Searcher do
     describe 'search by category' do
       let(:cat_name)  { 'Category' }
       let(:category)  { Category.create! name: cat_name }
-      let(:product)   { Product.create! params.merge(description: search) }
+      let(:product)   { Product.create! params }
       let(:search)    { { category: cat_name } }
 
       before do
