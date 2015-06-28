@@ -26,13 +26,4 @@ describe Category do
       end
     end
   end
-
-  describe '::search' do
-    let(:search)    { name.upcase }
-    let!(:category) { Category.create! params }
-
-    it 'should search case insensitive' do
-      expect(described_class.search(search)).to eq([category])
-    end
-  end
 end

@@ -4,10 +4,10 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = Product. 
-                  includes(:categories).
-                  search(params[:search]).
-                  order(sort_column + " " + sort_direction).
+    table_name = controller_name.classify.pluralize.downcase #to avoid ambigous column name
+    
+    @products = Product::Searcher.search(params[:search]).
+                  order("#{table_name}.#{sort_column} #{sort_direction}").
                   page(params[:page]).per(10)
   end
 

@@ -42,24 +42,4 @@ describe Product do
       end
     end
   end
-
-  describe '::search' do
-    let(:search)    { name.upcase }
-
-    context 'Search matches product name' do
-      let!(:product) { Product.create! params.merge(name: search) }
-
-      it 'should find the product' do
-        expect(described_class.search(search)).to eq([product])
-      end
-    end
-
-    context 'Search matches product description' do
-      let!(:product) { Product.create! params.merge(description: search) }
-
-      it 'should find the product' do
-        expect(described_class.search(search)).to eq([product])
-      end
-    end
-  end
 end

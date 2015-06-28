@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   # helper methods for index page sorting
   def sort_column
-    model_name = controller_name.classify
+    model_name  = controller_name.classify
     model_name.constantize.column_names.include?(params[:sort]) ? params[:sort] : 'id'
   end
   

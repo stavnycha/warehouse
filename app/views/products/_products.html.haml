@@ -21,7 +21,9 @@
         %td= product.name
         %td= product.price
         %td= product.description
-        %td= product.categories.map(&:name).join(', ')
+        %td
+          - product.categories.each do |cat|
+            =link_to cat.name, params.merge( search: { category: cat.name } ), remote: true
         %td
           = link_to 'Edit', edit_product_path(product), :class => 'btn btn-default btn-xs'
           = link_to 'Destroy', product_path(product), :method => :delete, :data => { confirm: 'Are you sure?' }, :class => 'btn btn-xs btn-danger'
