@@ -13,7 +13,7 @@ describe ProductsController do
     let!(:p1)  { Product.create! attributes.merge(name: 'a') }
     let!(:p2)  { Product.create! attributes.merge(name: 'b') }
 
-    subject      { get :index, params }
+    subject     { get :index, params }
 
     describe 'sorting' do
       let(:params) { { sort: 'name', direction: 'desc' } }

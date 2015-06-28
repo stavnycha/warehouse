@@ -10,14 +10,23 @@ describe CategoriesController do
   let(:attributes) { { name: 'Category1' } }
 
   describe 'index' do
+    subject { get :index, params }
+    let!(:cat1)  { Category.create! name: 'a' }
+    let!(:cat2)  { Category.create! name: 'b' }
+    
     describe 'sorting' do
       let(:params) { { sort: 'name', direction: 'desc' } }
-      subject      { get :index, params }
-      let!(:cat1)  { Category.create! name: 'a' }
-      let!(:cat2)  { Category.create! name: 'b' }
-
+    
       it 'should return correct sorting' do
         expect{ subject }.to change{ assigns(:categories) }.to([cat2, cat1])
+      end
+    end
+
+    context 'search' do
+      let(:params)   { { search: { query: 'a' } } }
+
+      it 'should return products where there is title or descr match' do
+        expect{ subject }.to change{ assigns(:categories) }.to([cat1])
       end
     end
   end
