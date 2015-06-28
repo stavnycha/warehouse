@@ -9,6 +9,7 @@ contain picture, description, price and whatever.
 ## Setup: ##
 
 Firstly, you need to have Imagemagick installed.
+The next step is to configure correctly config/database.yml using the template config/database.yml-example
 Afterwards, run following commands: 
 
 
