@@ -1,7 +1,7 @@
 = form_for @user, html: { class: "form form-horizontal category" } do |f|
   - if @user.errors.any?
     .alert.alert-danger
-      *- @user.errors.full_messages.each do |msg|
+      - @user.errors.full_messages.each do |msg|
         %li= msg
   .form-group
     = f.label :email, class: 'control-label'
