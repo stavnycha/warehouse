@@ -18,3 +18,4 @@
 
 # pictures of products
 /public/uploads
+/config/database.yml
